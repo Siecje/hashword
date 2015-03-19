@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Password</title>
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <form>
+      <select id="keys"></select>
+      <br>
+      OR
+      <br>
+      <input id="new_key" type="text" placeholder="New Key">
+      <br>
+      <input id="master" type="password" placeholder="Master Password">
+      <br>
+      <input id="copy" type="submit" value="Copy to Clipboard">
+    </form>
+  </main>
+  <script src="sha256.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
