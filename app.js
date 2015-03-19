@@ -9,7 +9,7 @@ var domCopy = document.getElementById('copy');
 var domMaster = document.getElementById('master');
 var domNewKey = document.getElementById('new_key');
 
-domCopy.addEventListener('click', function(){
+function submitForm(){
   var hash;
   if(domNewKey.value){
     hash = CryptoJS.SHA256(domNewKey.value + domMaster.value);
@@ -24,12 +24,38 @@ domCopy.addEventListener('click', function(){
     hash = CryptoJS.SHA256(domKeys.value + domMaster.value);
   }
 
-  copyToClipboard(hash);
-});
-
-function copyToClipboard (text) {
-  // var copyEvent = new ClipboardEvent('copy', {dataType: 'text/plain', data: text} );
-  //
-  // document.dispatchEvent(copyEvent);
-  window.prompt ("Copy to clipboard: Ctrl+C, Enter", text);
+  // copyToClipboard(hash);
+  showModal(hash);
 }
+
+domCopy.addEventListener('click', submitForm);
+
+// function copyToClipboard (text){
+//   window.prompt ("Copy to clipboard: Ctrl+C, Enter", text);
+// }
+
+function showModal(text){
+  var domModal = document.getElementById('openModal');
+  domModal.style.opacity = '1';
+  domModal.style.pointerEvents = 'auto';
+  var domPassword  = document.getElementById('password');
+  domPassword.value = text;
+  domPassword.select();
+  // TODO: use text
+}
+
+function close(){
+  // hide modal
+  var domModal = document.getElementById('openModal');
+  domModal.style.opacity = '0';
+  domModal.style.pointerEvents = 'none';
+
+  // clear inputs
+  var domPassword  = document.getElementById('password');
+  domPassword.value = '';
+  domMaster.value = '';
+  domNewKey.value = '';
+  domKeys.value = '';
+}
+
+document.getElementById('close').addEventListener('click', close);
