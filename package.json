@@ -1,0 +1,22 @@
+{
+  "name": "Hashword",
+  "main": "index.html",
+  "window": {
+    "fullscreen": false,
+    "resizable": false,
+    "title": "genesis",
+    "always-on-top": false,
+    "frame": true,
+    "visible": true,
+    "height": 600,
+    "exe_icon": "",
+    "width": 800,
+    "as_desktop": false,
+    "position": "",
+    "show_in_taskbar": true,
+    "mac_icon": "",
+    "transparent": false,
+    "toolbar": true,
+    "icon": ""
+  }
+}

@@ -15,7 +15,6 @@ var domMaster = document.getElementById('master');
 var domKey = document.getElementById('key');
 
 function submitForm(){
-
   var hash = CryptoJS.SHA256(domKey.value + domMaster.value);
 
   if(keys.indexOf(domKey.value) < 0){
@@ -23,38 +22,17 @@ function submitForm(){
     localStorage.setItem('keys', JSON.stringify(keys));
     updateKeys();
   }
-
-  showModal(hash);
+  copyToClipboard(hash);
+  clearInputs();
 }
 
-domCopy.addEventListener('click', submitForm);
-
-function showModal(text){
-  var domModal = document.getElementById('openModal');
-  domModal.style.opacity = '1';
-  domModal.style.pointerEvents = 'auto';
-  var domPassword  = document.getElementById('password');
-  domPassword.value = text;
-  domPassword.select();
+function copyToClipboard(password){
+  var gui = require('nw.gui');
+  var clipboard = gui.Clipboard.get();
+  clipboard.set(password.toString(), 'text');
 }
 
-function close(){
-  // hide modal
-  var domModal = document.getElementById('openModal');
-  domModal.style.opacity = '0';
-  domModal.style.pointerEvents = 'none';
-
-  // clear inputs
-  var domPassword  = document.getElementById('password');
-  domPassword.value = '';
+function clearInputs(){
   domMaster.value = '';
   domKey.value = '';
 }
-
-document.getElementById('close').addEventListener('click', close);
-
-document.addEventListener("keypress", function(e){
-  if(e.keyCode === 27){
-    close();
-  }
-});
