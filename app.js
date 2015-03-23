@@ -26,10 +26,26 @@ function submitForm(){
   clearInputs();
 }
 
-function copyToClipboard(password){
+function capitalizeFirstLetter(hash){
+  for(var i=0;i<hash.length;i++){
+    if(hash[i].toUpperCase() !== hash[i]){
+      if(i === hash.length - 1){
+        return hash.substring(0, i) + hash[i].toUpperCase();
+      }
+      else{
+        return hash.substring(0, i) + hash[i].toUpperCase() + hash.substring(i+1, hash.length);
+      }
+    }
+  }
+}
+
+function copyToClipboard(hash){
   var gui = require('nw.gui');
   var clipboard = gui.Clipboard.get();
-  clipboard.set(password.toString(), 'text');
+  // Add special character and
+  // ensure there is a capital letter
+  var password = '!' + capitalizeFirstLetter(hash.toString());
+  clipboard.set(password, 'text');
 }
 
 function clearInputs(){
