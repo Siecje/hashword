@@ -2,22 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Password</title>
+  <title>Hashword</title>
   <link href="styles.css" rel="stylesheet">
 </head>
 <body>
   <main>
     <h1>Hashword</h1>
-    <form action="javascript:submitForm();">
-      <input list="keys" id="key" placeholder="Password Key" autocomplete="off">
+    <button class="pointer" onclick="manageKeys()" id="manageBtn">Manage Password Keys</button>
+    <button class="pointer hidden" onclick="backToForm()" id="backBtn">Back</button>
+    <form id="form" action="javascript:submitForm();">
+      <input list="keys" id="key" placeholder="Password Key (ex. Site Name)" autocomplete="off">
       <datalist id="keys">
       </datalist>
       <br>
-      <input id="master" type="password" placeholder="Master Password">
+      <input id="master" type="password" placeholder="Master Password (ex. mysupersecretpassword)">
       <br>
       <input id="copy" type="submit" value="Copy to Clipboard" class="pointer">
     </form>
+    <div id="manageKeys" class="hidden">
+      <div id="keyList">
 
+      </div>
+      <button type="button" onclick="saveKeys();">Save Keys</button>
+    </div>
   </main>
   <div id="openModal" class="modal">
     <div>
