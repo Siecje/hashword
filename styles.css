@@ -2,7 +2,7 @@ main {
   text-align: center;
 }
 
-input[type=text], input[type=password], input[type=submit], select {
+input[type=text], input[type=password], input[type=submit], #key {
    -webkit-appearance: none;
    -moz-appearance: none;
    appearance: none;
@@ -18,8 +18,8 @@ input[type=text], input[type=password], input[type=submit], select {
    border: 1px solid #bbb;
 }
 
-select, input[type=submit] {
-  width: 83%;
+input[type=submit] {
+  width: 83.5%;
 }
 
 .modal{
@@ -69,4 +69,12 @@ select, input[type=submit] {
 
 .close:hover {
   background: #00d9ff;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.hidden{
+  display: none;
 }

@@ -2,30 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Password</title>
+  <title>Hashword</title>
   <link href="styles.css" rel="stylesheet">
 </head>
 <body>
   <main>
-    <form action="javascript:submitForm();">
-      <select id="keys"></select>
+    <h1>Hashword</h1>
+    <button class="pointer" onclick="manageKeys()" id="manageBtn">Manage Password Keys</button>
+    <button class="pointer hidden" onclick="backToForm()" id="backBtn">Back</button>
+    <form id="form" action="javascript:submitForm();">
+      <input list="keys" id="key" placeholder="Password Key (ex. Site Name)" autocomplete="off">
+      <datalist id="keys">
+      </datalist>
       <br>
-      OR
+      <input id="master" type="password" placeholder="Master Password (ex. mysupersecretpassword)">
       <br>
-      <input id="new_key" type="text" placeholder="New Key">
-      <br>
-      <input id="master" type="password" placeholder="Master Password">
-      <br>
-      <input id="copy" type="submit" value="Copy to Clipboard">
+      <input id="copy" type="submit" value="Copy to Clipboard" class="pointer">
     </form>
+    <div id="manageKeys" class="hidden">
+      <div id="keyList">
+
+      </div>
+      <button type="button" onclick="saveKeys();">Save Keys</button>
+    </div>
   </main>
   <div id="openModal" class="modal">
     <div>
       <a id="close" title="Close" class="close">X</a>
       <p>To Copy Password press Ctrl + C then Enter</p>
       <form action="javascript:close();">
-        <input id="password" type="text">
-        <input type="submit" style="display: none;">
+        <input id="password" type="text" readonly>
       </form>
     </div>
   </div>
