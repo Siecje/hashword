@@ -1,0 +1,7 @@
+Include how long it would take to get passwords. double decrypt but in the worst case that it is stored in plaintext.
+
+use scrypt
+
+add randomness to Password Keys? Only if the same Hashword is always available.
+
+tests

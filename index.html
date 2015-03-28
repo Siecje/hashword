@@ -35,7 +35,11 @@
       </form>
     </div>
   </div>
-  <script src="sha256.js"></script>
-  <script src="app.js"></script>
+  
+  <script src="jspm_packages/system.js"></script>
+  <script src="config.js"></script>
+  <script>
+    System.import('lib/app');
+  </script>
 </body>
 </html>

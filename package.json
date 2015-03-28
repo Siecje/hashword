@@ -1,0 +1,14 @@
+{
+  "jspm": {
+    "directories": {
+      "lib": ".",
+      "packages": "jspm_packages"
+    },
+    "dependencies": {
+      "browserify": "^9.0.3",
+      "node-gyp": "^1.0.3",
+      "requirejs": "^2.1.16",
+      "scrypt": "npm:scrypt@^4.0.7"
+    }
+  }
+}
