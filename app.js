@@ -23,7 +23,6 @@ function submitForm(){
     localStorage.setItem('keys', JSON.stringify(keys));
     updateKeys();
   }
-
   showModal(hash);
 }
 
@@ -36,6 +35,7 @@ function showModal(text){
   var domPassword  = document.getElementById('password');
   domPassword.value = text;
   domPassword.select();
+  document.execCommand('cut');
 }
 
 function close(){
