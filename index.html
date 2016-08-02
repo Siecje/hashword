@@ -8,7 +8,9 @@
 <body>
   <main>
     <h1>Hashword</h1>
-    <form action="javascript:submitForm();">
+    <button class="pointer" onclick="manageKeys()" id="manageBtn">Manage Password Keys</button>
+    <button class="pointer hidden" onclick="backToForm()" id="backBtn">Back</button>
+    <form id="passwordForm" action="javascript:submitForm();">
       <input list="keys" id="key" placeholder="Password Key" autocomplete="off">
       <datalist id="keys">
       </datalist>
@@ -17,6 +19,13 @@
       <br>
       <input id="copy" type="submit" value="Copy to Clipboard" class="pointer">
     </form>
+    <div id="manageKeys" class="hidden">
+      <div id="keyList">
+
+      </div>
+      <button type="button" onclick="addKey();">Add Key</button>
+      <button type="button" onclick="saveKeys();">Save Keys</button>
+    </div>
   </main>
   <script src="sha256.js"></script>
   <script src="app.js"></script>
