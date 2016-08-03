@@ -1,5 +1,9 @@
 {
-  "name" : "Hashword",
-  "main" : "index.html",
-  "version" : "1.0.0"
+  "name": "Hashword",
+  "main": "main.js",
+  "version": "1.0.0",
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "materialize-css": "^0.97.7"
+  }
 }

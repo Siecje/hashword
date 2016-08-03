@@ -3,28 +3,44 @@
 <head>
   <meta charset="utf-8">
   <title>Password</title>
-  <link href="styles.css" rel="stylesheet">
+  <link href="node_modules/materialize-css/dist/css/materialize.min.css" rel="stylesheet">
+  <!-- <link href="styles.css" rel="stylesheet"> -->
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/hammerjs/hammer.min.js"></script>
+  <script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
 </head>
 <body>
+  <header>
+    <nav>
+     <div class="nav-wrapper">
+       <a href="index.html" class="brand-logo">Hashword</a>
+       <ul id="nav-mobile" class="right hide-on-med-and-down">
+         <li><a href="manage.html">Manage Keys</a></li>
+       </ul>
+     </div>
+   </nav>
+ </header>
   <main>
-    <h1>Hashword</h1>
-    <button class="pointer" onclick="manageKeys()" id="manageBtn">Manage Password Keys</button>
-    <button class="pointer hidden" onclick="backToForm()" id="backBtn">Back</button>
-    <form id="passwordForm" action="javascript:submitForm();">
-      <input list="keys" id="key" placeholder="Password Key" autocomplete="off">
-      <datalist id="keys">
-      </datalist>
-      <br>
-      <input id="master" type="password" placeholder="Master Password">
-      <br>
-      <input id="copy" type="submit" value="Copy to Clipboard" class="pointer">
-    </form>
-    <div id="manageKeys" class="hidden">
-      <div id="keyList">
-
-      </div>
-      <button type="button" onclick="addKey();">Add Key</button>
-      <button type="button" onclick="saveKeys();">Save Keys</button>
+    <div class="container">
+      <form id="passwordForm" action="javascript:submitForm();">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="passwordKey" type="text">
+            <label for="passwordKey">Password Key</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="master" type="password">
+            <label for="passwordKey">Master Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="copy" type="submit" value="Copy to Clipboard" class="btn">
+          </div>
+        </div>
+      </form>
     </div>
   </main>
   <script src="sha256.js"></script>

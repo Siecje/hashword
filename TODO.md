@@ -1,4 +1,3 @@
 - Remove Password Keys button (x)
 - Add button to increment number to change password
 - Installer
-- Material Design

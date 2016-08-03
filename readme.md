@@ -53,3 +53,11 @@ Change the **Password Key** used for that site, and use the new generated passwo
 ###I use two factor authentication do I need Hashword?
 
 If you use two factor authentication for everything you need to login to then you don't need to use Hashword. The problems is that not all sites support two factor authentication.
+
+## Development
+
+```shell
+npm install -g electron
+npm install
+electron .
+```
