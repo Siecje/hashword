@@ -2,14 +2,14 @@ var keys = JSON.parse(localStorage.getItem('keys')) || [];
 
 var domKeys = document.getElementById('keys');
 
-function updateKeys(){
+function updateDOMKeys(){
   domKeys.innerHTML = '';
-  for (var k in keys){
-    domKeys.innerHTML += '<option value="' + keys[k] + '">';
+  for (let k of keys) {
+    domKeys.innerHTML += `<option value="${k}">`;
   }
 }
 
-updateKeys();
+updateDOMKeys();
 
 var domCopy = document.getElementById('copy');
 var domMaster = document.getElementById('master');
@@ -18,35 +18,37 @@ var domKey = document.getElementById('key');
 function submitForm(){
   var hash = CryptoJS.SHA256(domKey.value + domMaster.value);
 
-  if(keys.indexOf(domKey.value) < 0){
+  if (keys.indexOf(domKey.value) < 0) {
     keys.push(domKey.value);
     localStorage.setItem('keys', JSON.stringify(keys));
-    updateKeys();
+    updateDOMKeys();
   }
-  showModal(hash);
+  navigator.clipboard.writeText(hash).then(
+    () => {
+      showModal();
+    },
+    () => {
+      console.log("Failed");
+    },
+  );
+  
 }
 
 domCopy.addEventListener('click', submitForm);
 
-function showModal(text){
+function showModal() {
   var domModal = document.getElementById('openModal');
   domModal.style.opacity = '1';
   domModal.style.pointerEvents = 'auto';
-  var domPassword  = document.getElementById('password');
-  domPassword.value = text;
-  domPassword.select();
-  document.execCommand('cut');
 }
 
-function close(){
+function close() {
   // hide modal
   var domModal = document.getElementById('openModal');
   domModal.style.opacity = '0';
   domModal.style.pointerEvents = 'none';
 
   // clear inputs
-  var domPassword  = document.getElementById('password');
-  domPassword.value = '';
   domMaster.value = '';
   domKey.value = '';
 }
@@ -54,12 +56,12 @@ function close(){
 document.getElementById('close').addEventListener('click', close);
 
 document.addEventListener("keypress", function(e){
-  if(e.keyCode === 27){
+  if (e.key === 'Escape') {
     close();
   }
 });
 
-function manageKeys(){
+function manageKeys() {
   // hide form
   document.getElementById('form').style.display = 'none';
   document.getElementById('manageBtn').style.display = 'none';
@@ -69,25 +71,25 @@ function manageKeys(){
   var domKeys = document.getElementById('keyList');
   domKeys.innerHTML = '';
 
-  if(keys.length === 0){
-    domKeys.innerHTML += 'You don\'t have any Password Keys.';
+  if (keys.length === 0) {
+    domKeys.innerHTML += "You don't have any Password Keys.";
   }
-  else{
-    for(var i in keys){
-      domKeys.innerHTML += '<input type="text" value="' + keys[i] + '">';
+  else {
+    for (var k of keys) {
+      domKeys.innerHTML += `<input type="text" value="${k}">`;
     }
   }
 }
 
-function saveKeys(){
+function saveKeys() {
   var keyInputs = document.querySelectorAll('#keyList > input');
   keys = [];
-  for(var i in keyInputs){
-    if(keyInputs[i].value){
-      keys.push(keyInputs[i].value);
+  for (let i of keyInputs) {
+    if (i.value) {
+      keys.push(i.value);
     }
   }
-  updateKeys();
+  updateDOMKeys();
   localStorage.setItem('keys', JSON.stringify(keys));
 }
 

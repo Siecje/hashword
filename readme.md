@@ -2,16 +2,18 @@
 
 A password manager that allows you to only remember one 'master' password that is combined with a keyword and hashed for a unique password.
 
-For example you can use the **Password Key** ```Google``` with your one password to remember ```mylongandsupersecretpassword``` to get a password to use ```!22C62796d6f2fa11cddf3bafa414299ac6944930011887a2577f9678d3e7dd6a``` when you log into Google.
+For example you can use the **Password Key** for example `Service` with your one password to remember `mylongandsupersecretpassword` to get a password to use `bc4f96f753fdaf8b0f6c1c24ee7ba27cd0f4e1cdd4b1ca3e6407db7fec9c7b3f` when you log into the service.
 
 ## Running Hashword
 
 ```shell
+# macOS
+open index.html
+# Linux
 xdg-open index.html
 # or
 firefox index.html
 ```
-
 
 ![Main Page](https://raw.githubusercontent.com/siecje/hashword/master/img/main.png)
 
@@ -34,8 +36,6 @@ The Password Key and the **Master Password** are combined (concatenated) and has
 - Have to be careful where you paste after you enter the password. You could consciously copy some text after you login.
 - If your computer is compromised a portion of your passwords are known (the **Password Keys**). Even if a **Password Key** is known the resulting password must be verified with the site/service which has additional security such as rate limiting. One solution would be to require the master password initially and pre-populate the field so you just select the **Password Key**. However verifying the master password requires storing a hash of the **Master Password** which can be used to brute force the **Master Password**.
 
-- If your computer is compromised a portion of your passwords are known (the **Password Keys**). When guessing the **Master Password** the resulting password must be verified with the site/service which hopefully has additional security such as rate limiting. One solution would be to require the master password initially and pre-populate the field so you just select the **Password Key**. However verifying the master password requires storing a hash of the **Master Password** which can be used to brute force the **Master Password**.
-
 ## FAQ
 
 ### Why do you create a gibberish password? What about this [xkcd comic](https://xkcd.com/936/)?
@@ -44,7 +44,7 @@ The main problem is using the same password in multiple places. If a site databa
 
 ### Won't people just use "masterpassword" as the **Master Password**?
 
-If someone knows you are using Hashword they could try a common passwords as the **Master Password** and common **Password Keys** such as the website name. Don't use a common or short password as the **Master Password**. An important principle of security is not to give people information. Even letting someone hear you type your password is information.
+If someone knows you are using Hashword they could try a common passwords as **Master Password** and common **Password Keys** such as the website name. Don't use a common or short password as the **Master Password**. An important principle of security is not to give people information. Even letting someone hear you type your password is information.
 
 ### What if I do not have access to Hashword and need to login?
 
